@@ -4,6 +4,69 @@
   padding: 2rem;
   text-align: center;
 }
+body {
+  background-color: #c5e1fc;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+
+.card {
+  border: none; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+#product-title {
+  font-size: 1.25rem;
+  font-weight:bolder;
+  margin-bottom: 0.5rem;
+  color: #080395;
+}
+
+#product-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #080395;
+}
+.btn-primary {
+  background-color: #080395;
+  border-color: #080395;
+}
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #c5e1fc;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+
+footer {
+  background: #212529;
+  color: #f8f9fa;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+}
 
 .logo {
   height: 6em;
@@ -37,6 +100,24 @@
   padding: 2em;
 }
 
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+
 .read-the-docs {
   color: #888;
+}
+@media (max-width: 576px) {
+  .btn-responsive {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 0.9rem;
+  }
 }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts, fetchCategories, fetchProductsByCategory } from "../context/api";
+import { fetchProducts, fetchProductById, fetchProductsByCategory } from "../context/api";
 import type { Product } from "../types/Product";
 
 
@@ -12,10 +12,18 @@ export const useProducts = (selectedCategory?: string) => {
 };
 
 
+export const useProductsByCategory = (category: string) => {
+  return useQuery<Product[]>({
+    queryKey: ["products", category],
+    queryFn: () => fetchProductsByCategory(category),
+    enabled: !!category, 
+  });
+};
 
-export const useCategories = () => {
-    return useQuery<string[]>({
-        queryKey: ["categories"],
-        queryFn: fetchCategories,
-    });
+export const useProduct = (id: number) => {
+  return useQuery<Product>({
+    queryKey: ["product", id],
+    queryFn: () => fetchProductById(id),
+    enabled: !!id,
+  });
 };

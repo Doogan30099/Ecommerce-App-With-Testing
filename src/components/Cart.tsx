@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/store"
-import { removeFromCart, ClearCart } from "../redux/cartSlice";
+import { removeFromCart, clearCart } from "../redux/cartSlice";
 
 
 export default function Cart() {
@@ -51,14 +51,14 @@ export default function Cart() {
                         className="btn btn-sm btn-success me-2"
                         onClick={() => {
                             alert("Checkout successful")
-                            dispatch(ClearCart());
+                            dispatch(clearCart());
                         }}
                     >
                         Checkout
                     </button>
                     <button
                         className="btn btn-sm btn-outline-danger"
-                        onClick={() => dispatch(ClearCart())}
+                        onClick={() => dispatch(clearCart())}
                     >
                        Clear 
                     </button>

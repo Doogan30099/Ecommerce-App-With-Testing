@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCategories } from "../hooks/useProducts";
+import { useCategories } from "../hooks/UseCategories";
 
 
 
