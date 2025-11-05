@@ -11,7 +11,7 @@ export default function NavBar() {
     return (
         <BsNavbar bg='dark' variant='dark' expand='lg' className='shadow-sm py-3 sticky-top'>
             <Container>
-                <BsNavbar.Brand as={Link} to="/">E-Commerce</BsNavbar.Brand>
+                <BsNavbar.Brand as={Link} to="/">Pj's Big Barn of Everything</BsNavbar.Brand>
                 <BsNavbar.Toggle aria-controls='main-navbar' />
                 <BsNavbar.Collapse id='main-navbar'>
                     <Nav className='ms-auto'>

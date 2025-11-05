@@ -4,13 +4,16 @@ import { fetchProducts } from "../context/api";
 import type { Product } from "../types/Product";
 import { useAppDispatch } from "../hooks/UseAppDispatch";
 import { addToCart } from "../redux/cartSlice";
-import { Button, Container, Spinner } from "react-bootstrap";
-
+import { Button, Container, Spinner, Toast } from "react-bootstrap";
+import { useState } from "react";
 
 const ProductDetails = () => {
     const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
-    
+    const [showToast, setShowToast] = useState(false);
+
+
+
     const { data: products, isLoading, isError} = useQuery<Product[]>({
         queryKey: ["products"],
         queryFn: fetchProducts,
@@ -50,7 +53,10 @@ const ProductDetails = () => {
                     <Button 
                         variant="primary"
                         className="me-2"
-                        onClick={() => dispatch(addToCart(product))}
+                        onClick={() => {
+                            dispatch(addToCart(product));
+                            setShowToast(true);
+                        }}
                     >
                         Add to Cart        
                     </Button>
@@ -58,6 +64,16 @@ const ProductDetails = () => {
                     Back to Products
                     </Link>
                 </div>
+            </div>
+            
+           
+            <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
+                <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide>
+                    <Toast.Header>
+                        <strong className="me-auto">Success!</strong>
+                    </Toast.Header>
+                    <Toast.Body>Added to cart!</Toast.Body>
+                </Toast>
             </div>
         </Container>
     );

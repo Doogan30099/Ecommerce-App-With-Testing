@@ -5,6 +5,8 @@ import { addToCart } from "../redux/cartSlice";
 import type { AppDispatch } from "../redux/store";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { Toast } from 'react-bootstrap';
+import { useState } from "react";
 
 interface ProductCardProps {
   product: Product;
@@ -13,9 +15,15 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const [showToast, setShowToast] = useState(false);
 
   const handleViewDetails = () => {
     navigate(`/product/${product.id}`);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    setShowToast(true);
   };
 
   return (
@@ -56,7 +64,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 variant="primary"
                 size="sm"
                 className="flex-fill flex-sm-fill-0 btn-sm"
-                onClick={() => dispatch(addToCart(product))}
+                onClick={handleAddToCart}
               >
                 Add
               </Button>
@@ -64,6 +72,14 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </Card.Body>
       </Card>
+    <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
+        <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide>
+          <Toast.Header>
+            <strong className="me-auto">Success!</strong>
+          </Toast.Header>
+          <Toast.Body>Added to cart!</Toast.Body>
+        </Toast>
+      </div>
     </div>
   );
 }
