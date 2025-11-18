@@ -46,6 +46,13 @@ const renderWithProviders = (ui: React.ReactElement) => {
 };
 
 describe("ProductCard", () => {
+  test("matches snapshot (initial render)", () => {
+    const { asFragment } = renderWithProviders(
+      <ProductCard product={product} />
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   test("renders product info", () => {
     renderWithProviders(<ProductCard product={product} />);
     expect(screen.getByText("Test Product")).toBeInTheDocument();
