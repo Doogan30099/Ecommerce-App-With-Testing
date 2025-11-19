@@ -66,7 +66,7 @@ describe("ProductCard", () => {
     expect(store.getState().cart.items).toHaveLength(1);
     expect(screen.getByText(/added to cart!/i)).toBeInTheDocument();
 
-    // Click again increments quantity
+   
     fireEvent.click(addButton);
     expect(store.getState().cart.items[0].quantity).toBe(2);
   });

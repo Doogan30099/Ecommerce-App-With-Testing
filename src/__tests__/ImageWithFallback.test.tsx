@@ -15,7 +15,7 @@ describe("ImageWithFallback", () => {
     render(<ImageWithFallback src="broken-url.png" alt="Broken" />);
     const img = screen.getByAltText("Broken");
 
-    // Simulate image error
+    
     fireEvent.error(img);
 
     expect((img as HTMLImageElement).src).toContain(

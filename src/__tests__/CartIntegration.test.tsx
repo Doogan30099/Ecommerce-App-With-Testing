@@ -43,18 +43,17 @@ const renderScenario = () => {
 describe("Cart Integration", () => {
   test("adding a product updates cart UI and state", () => {
     const { store } = renderScenario();
-    // Initially cart empty badge shown
+    
     expect(screen.getByText(/cart empty/i)).toBeInTheDocument();
 
     const addBtn = screen.getByRole("button", { name: /add/i });
     fireEvent.click(addBtn);
 
-    // State updated
     const state = store.getState();
     expect(state.cart.items).toHaveLength(1);
     expect(state.cart.items[0].quantity).toBe(1);
 
-    // UI updated: old badge gone, new button with count appears
+   
     expect(screen.queryByText(/cart empty/i)).toBeNull();
     expect(
       screen.getByRole("button", { name: /cart \(1\) - \$20\.00/i })
