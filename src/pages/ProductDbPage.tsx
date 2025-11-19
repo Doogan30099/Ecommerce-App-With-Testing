@@ -6,20 +6,17 @@ import type { Product } from "../types/Product";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 const ProductDbPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
-
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "products"));
         const productsList: Product[] = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+          id: Number(doc.id),
           ...(doc.data() as Omit<Product, "id">),
         }));
         setProducts(productsList);
@@ -48,7 +45,10 @@ const ProductDbPage = () => {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id} onClick={() => navigate("update-product/" + product.id)}>
+            <tr
+              key={product.id}
+              onClick={() => navigate("update-product/" + product.id)}
+            >
               <td>{product.id}</td>
               <td>{product.title}</td>
               <td>{product.price.toFixed(2)}</td>
@@ -60,9 +60,9 @@ const ProductDbPage = () => {
           ))}
         </tbody>
       </Table>
-        <Link to="/admin" className="btn btn-primary">
-          Back to Admin
-        </Link>
+      <Link to="/admin" className="btn btn-primary">
+        Back to Admin
+      </Link>
     </Container>
   );
 };
