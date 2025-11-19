@@ -36,7 +36,7 @@ const UpdateProduct: React.FC = () => {
     }, [id]);
 
     const handleUpdate = async (e: React.FormEvent) => {
-        e.preventDefault(); // Prevent form submission/page refresh
+        e.preventDefault(); 
         if (!id) return;
         try {
             const docRef = doc(db, "products", id);
