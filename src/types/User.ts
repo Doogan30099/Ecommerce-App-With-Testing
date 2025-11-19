@@ -1,13 +1,13 @@
 export interface UserProfile {
   id: string;
   name: string;
-  username: string;
-  email: string;
-  age: number;
-  address: string;
-  city: string;
-  state: string;
-  zipcode: string;
+  username?: string;
+  email?: string;
+  age?: number;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipcode?: string;
 }
 
 export class User {
