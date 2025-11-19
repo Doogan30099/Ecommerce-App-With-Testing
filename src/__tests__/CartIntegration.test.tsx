@@ -15,7 +15,7 @@ const makeStore = () =>
   });
 
 const product: Product = {
-  id: "2",
+  id: 2,
   title: "Integration Product",
   price: 20,
   category: "integration",

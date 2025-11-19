@@ -24,8 +24,7 @@ const makeStore = () =>
   });
 
 const product: Product = {
-  // Cast to any for id mismatch between Product (string) and usage in cart slice expecting number
-  id: "1",
+  id: 1,
   title: "Test Product",
   price: 9.99,
   category: "test-category",

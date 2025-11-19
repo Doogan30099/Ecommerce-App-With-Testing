@@ -1,5 +1,5 @@
 export interface Product {
-  id: string;
+  id: number;
   title: string;
   price: number;
   category: string;
@@ -9,8 +9,7 @@ export interface Product {
   rating: Rating;
 }
 
-
 export interface Rating {
-    rate: number;
-    count: number;
+  rate: number;
+  count: number;
 }
