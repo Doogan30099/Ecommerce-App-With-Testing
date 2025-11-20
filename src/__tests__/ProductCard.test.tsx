@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
-// Mock react-router-dom navigate
 jest.mock("react-router-dom", () => {
   const actual = jest.requireActual("react-router-dom");
   return {
